@@ -1,22 +1,18 @@
 class Solution {
     public String addSpaces(String s, int[] spaces) {
-        StringBuilder sb = new StringBuilder();
-        int prev = 0; // To track the starting index of the next substring
-        
-        for (int i = 0; i < spaces.length; i++) {
-            // Extract substring between `prev` and `spaces[i]`
-            sb.append(s.substring(prev, spaces[i]));
-            sb.append(" "); // Add a space
-            prev = spaces[i]; // Update `prev` to current space index
+        StringBuilder ans = new StringBuilder();
+        int n = s.length() , spacePointer = 0;
+
+        for(int i = 0 ; i < n ; i++){
+            if(spacePointer < spaces.length && i == spaces[spacePointer]){
+                ans.append(' ');
+                ans.append(s.charAt(i));
+                spacePointer++;
+            }else{
+                ans.append(s.charAt(i));
+            }
         }
-        sb.append(s.substring(prev));
         
-        
-         return sb.toString();
-        
+        return ans.toString();
     }
-    
-   
-    
-    
 }
